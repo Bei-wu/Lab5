@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forest Walk</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Forest images -->
+  <img src="wind.jpg" id="windScene" class="scene" alt="Forest trees">
+  <img src="birds.jpg" id="birdsScene" class="scene active" alt="Forest birds">
+  <img src="footsteps.jpg" id="footstepsScene" class="scene" alt="Forest path">
+
+  <div class="overlay"></div>
+
+  <main class="container">
+
+    <h1>Forest Walk</h1>
+
+    <div class="control-panel">
+
+      <!-- Scene buttons -->
+      <div class="scene-buttons">
+        <button class="scene-button" data-scene="wind">Wind</button>
+        <button class="scene-button selected" data-scene="birds">Birdsong</button>
+        <button class="scene-button" data-scene="footsteps">Footsteps</button>
+      </div>
+
+      <!-- Audio player -->
+      <div class="player">
+
+        <button id="playButton">Play</button>
+
+        <span id="currentTime">0:00</span>
+
+        <input
+          type="range"
+          id="progress"
+          min="0"
+          max="75"
+          value="0"
+          step="0.1"
+        >
+
+        <span id="totalTime">1:15</span>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Forest soundscape -->
+  <audio id="forestAudio" src="forest_walk_75s_final.mp3"></audio>
+
+</body>
+</html>

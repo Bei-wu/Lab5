@@ -1,0 +1,221 @@
+
+/* Basic settings */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* Full-screen images */
+
+.scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s;
+  animation-play-state: paused;
+}
+
+.scene.active {
+  opacity: 1;
+}
+
+/* Image animations */
+
+#windScene {
+  animation: windMove 6s infinite alternate;
+  animation-play-state: paused;
+}
+
+#birdsScene {
+  animation: slowZoom 12s infinite alternate;
+  animation-play-state: paused;
+}
+
+#footstepsScene {
+  animation: slowZoom 8s infinite alternate;
+  animation-play-state: paused;
+}
+
+body.playing #windScene.active,
+body.playing #birdsScene.active,
+body.playing #footstepsScene.active {
+  animation-play-state: running;
+}
+
+@keyframes windMove {
+  from {
+    transform: scale(1.05) translateX(-1%);
+  }
+
+  to {
+    transform: scale(1.05) translateX(1%);
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* Background overlay */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+/* Page layout */
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  padding: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Center title */
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 70px;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Bottom controls */
+
+.control-panel {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+/* White buttons */
+
+button {
+  padding: 12px 24px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 2px solid white;
+}
+
+button.selected {
+  border: 2px solid white;
+  font-weight: bold;
+}
+
+/* Scene buttons */
+
+.scene-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+/* Audio player */
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#currentTime,
+#totalTime {
+  font-size: 14px;
+  color: white;
+}
+
+/* White progress bar */
+
+#progress {
+  flex: 1;
+  min-width: 50px;
+  height: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+}
+
+#progress::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+}
+
+/* Mobile screens */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 15px;
+  }
+
+  h1 {
+    font-size: 45px;
+  }
+
+  .scene-buttons {
+    gap: 5px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .player {
+    gap: 8px;
+  }
+}
